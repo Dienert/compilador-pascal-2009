@@ -1,12 +1,12 @@
 package compilador.sintatico;
 
-import compilador.ErroCompilacao;
-import compilador.lexico.Code;
-import compilador.lexico.AnalisadorLexico;
-import compilador.lexico.Token;
-import compilador.semantico.AnalisadorSemantico;
 import java.io.IOException;
 import java.util.LinkedList;
+
+import compilador.ErroCompilacao;
+import compilador.lexico.AnalisadorLexico;
+import compilador.lexico.Code;
+import compilador.lexico.Token;
 
 public class AnalisadorSintatico {
 
@@ -28,7 +28,6 @@ public class AnalisadorSintatico {
     public void compilar(String fileName) throws IOException, ErroCompilacao {
 
         AnalisadorLexico lexico = new AnalisadorLexico(fileName);
-        AnalisadorSemantico semantico = new AnalisadorSemantico();
         
         LinkedList<Integer> pilha = new LinkedList<Integer>();
         
@@ -49,24 +48,24 @@ public class AnalisadorSintatico {
                     case Code.DOLLAR:
                         break laco;
                     case Code.ID:
-                        semantico.addId(token.getSimbolo());
+//                        semantico.addId(token.getSimbolo());
                         break;
                     case Code.PR_INTEIRO:
                     case Code.LIT_INTEIRO:
-                        semantico.addInteger();
+//                        semantico.addInteger();
                         break;
                     case Code.PR_REAL:
                     case Code.LIT_REAL:
-                        semantico.addReal();
+//                        semantico.addReal();
                         break;
                     case Code.PR_STRING:
                     case Code.LIT_STRING:
-                        semantico.addString();
+//                        semantico.addString();
                         break;
                     case Code.PR_BOOLEAN:
                     case Code.PR_TRUE:
                     case Code.PR_FALSE:
-                        semantico.addBoolean();
+//                        semantico.addBoolean();
                         break;
                     case Code.OP_ADICAO:
                     case Code.OP_AND:
@@ -83,7 +82,7 @@ public class AnalisadorSintatico {
                     case Code.OP_NOT:
                     case Code.OP_OR:
                     case Code.OP_SUBTRACAO:
-                        semantico.addOperador(topo);
+//                        semantico.addOperador(topo);
                         break;
                 }
                 pilha.pop();
@@ -108,107 +107,109 @@ public class AnalisadorSintatico {
                 }
                 
             } else if (Code.isAcaoSemantica(topo)) {
-                semantico.execute(lexico.getLine(), pilha.pop());
+//                semantico.execute(lexico.getLine(), pilha.pop());
             } else { 
                 throw new ErroCompilacao(lexico.getLine(),token, anterior, topo);                               
             }
         }
         
-        System.out.println("\nPrograma aprovado pelos analisadores léxico, sintático e semântico\n");
+        System.out.println("\nPrograma aprovado pelos analisadores léxico e sintático \n");
 
     }
 
     /**
+     * Método que inicia o vetor de regras
      *
      */
     public void initVectors() {
 
         regras = new int[]{            
             0,
-            Code.DECLARACAO_ROTINAS, Code.DECLARACAO_VARIAVEIS, Code.PONTO_E_VIRGULA, Code.ID, Code.PR_PROGRAM, 0,
-/**/            Code.DECLARACAO_VARIAVEIS, Code.PONTO_E_VIRGULA, Code.LISTA_VARIAVEIS, Code.AS(3), Code.ID, Code.PR_VAR, 0,
-            0,
-/**/            Code.LISTA_VARIAVEIS,  Code.AS(3), Code.ID, Code.VIRGULA, 0,
-/**/            Code.AS(4), Code.TIPO, Code.DOIS_PONTOS, 0,
-/**/            Code.DECLARACAO_ROTINAS, Code.AS(6), Code.BLOCO, Code.DECLARACAO_VARIAVEIS, Code.PONTO_E_VIRGULA, Code.AS(8), Code.FECHA_PARENTESES, Code.PARAMETROS, Code.AS(5), Code.ABRE_PARENTESES, Code.ID, Code.PR_PROCEDURE, 0,
-/**/            Code.DECLARACAO_ROTINAS, Code.AS(6), Code.BLOCO, Code.DECLARACAO_VARIAVEIS, Code.PONTO_E_VIRGULA, Code.AS(7), Code.AS(3), Code.TIPO, Code.DOIS_PONTOS, Code.FECHA_PARENTESES, Code.PARAMETROS, Code.AS(5), Code.ABRE_PARENTESES, Code.ID, Code.PR_FUNCTION, 0,
-            Code.BLOCO, 0,
-/**/            Code.LISTA_PARAMETROS, Code.LISTA_VARIAVEIS, Code.AS(3), Code.ID, 0,
-            0,
-/**/            Code.LISTA_PARAMETROS, Code.LISTA_VARIAVEIS, Code.AS(3), Code.ID, Code.VIRGULA, 0,
-            0,
-            Code.PR_END, Code.LIST_COMANDOS, Code.PR_BEGIN, 0,
-            Code.LIST_COMANDOS, Code.COMANDO, 0,
-            0,
-            Code.PONTO_E_VIRGULA, Code.ATRIBUICAO_OU_CALL, Code.ID, 0,
-            Code.CONDICIONAL, 0,
-            Code.LACO, 0,
-/**/            Code.AS(2), Code.EXPRESSAO, Code.OP_ATRIBUICAO, Code.AS(9), 0,
-            Code.ARGUMENTOS_OPCIONAL, 0,
-            Code.BLOCO_ELSE, Code.BLOCO_OU_COMANDO, Code.PR_THEN, Code.AS(11), Code.EXPRESSAO, Code.PR_IF, 0,            
-            Code.PR_END, Code.BLOCO_CASE, Code.PR_OF, Code.AS(12), Code.EXPRESSAO, Code.PR_CASE, 0,
-            Code.COMANDO, 0,
-            Code.BLOCO, 0,
-            Code.BLOCO_OU_COMANDO, Code.PR_ELSE, 0,
-            0,
-            Code.BLOCO_CASE_2, Code.LIST_COMANDOS, Code.DOIS_PONTOS, Code.LISTA_LITERAIS, Code.AS(12), Code.LIT_INTEIRO, 0,
-            Code.BLOCO_CASE_2, Code.LIST_COMANDOS, Code.DOIS_PONTOS, Code.LISTA_LITERAIS, Code.AS(12), Code.LIT_INTEIRO, 0,
-            Code.LIST_COMANDOS, Code.DOIS_PONTOS, Code.PR_ELSE, 0,
-            0,
-            Code.AS(12), Code.LIT_INTEIRO, Code.PONTO_PONTO, 0, 
-            Code.LISTA_LITERAIS_2, Code.AS(12), Code.LIT_INTEIRO, Code.VIRGULA, 0,
-            0,
-            Code.LISTA_LITERAIS_2, Code.AS(12), Code.LIT_INTEIRO, Code.VIRGULA, 0,
-            0,
-            Code.BLOCO, Code.PR_DO, Code.AS(11), Code.EXPRESSAO, Code.PR_WHILE, 0,
-            Code.BLOCO, Code.PR_DO, Code.PASSO, Code.AS(12), Code.EXPRESSAO, Code.TO_OU_DOWNTO, Code.AS(12), Code.EXPRESSAO, Code.OP_ATRIBUICAO, Code.AS(13), Code.ID, Code.PR_FOR, 0,
-            Code.PR_TO, 0,
-            Code.PR_DOWNTO, 0,
-            Code.AS(12), Code.EXPRESSAO, Code.PR_STEP, 0,
-            0,
-            Code.LISTA_ARGUMENTOS, Code.EXPRESSAO, 0,
-            0,
-            Code.LISTA_ARGUMENTOS, Code.EXPRESSAO, Code.VIRGULA, 0,
-            0,
-            Code.EXPRESSAO_COMPAPACAO, Code.EXP_SIMPLES, 0,
-/**/            Code.AS(2), Code.EXP_SIMPLES, Code.OPERADOR_RELACIONAL, 0,
-            0,
-            Code.EXP_SIMPLES_2, Code.TERMO, 0,
-/**/            Code.AS(2), Code.EXP_SIMPLES, Code.OPERADOR_ADITIVO, 0,
-            0,
-            Code.TERMO2, Code.FATOR, 0,
-            Code.TERMO2, Code.FATOR, Code.SINAL, 0,
-/**/            Code.AS(2), Code.TERMO, Code.OPERADOR_MULTIPLICATIVO, 0,
-            0,
-/**/            Code.ARGUMENTOS_OPCIONAL, Code.ID, 0,
-            Code.LIT_INTEIRO, 0,
-            Code.LIT_REAL, 0,
-            Code.LIT_STRING, 0,
-            Code.PR_TRUE, 0,
-            Code.PR_FALSE, 0,
-            Code.FATOR, Code.OP_NOT, 0,
-            Code.FECHA_PARENTESES, Code.EXPRESSAO, Code.ABRE_PARENTESES, 0,
-/**/            Code.AS(10), Code.FECHA_PARENTESES, Code.ARGUMENTOS, Code.ABRE_PARENTESES,Code.AS(9), 0,
-            Code.OP_IGUAL, 0,
-            Code.OP_MENOR, 0,
-            Code.OP_MAIOR, 0,
-            Code.OP_MENOR_IGUAL, 0,
-            Code.OP_MAIOR_IGUAL, 0,
-            Code.OP_DIFERENTE, 0,
-            Code.OP_ADICAO, 0,
-            Code.OP_SUBTRACAO, 0,
-            Code.OP_ADICAO, 0,
-            Code.OP_SUBTRACAO, 0,
-            Code.OP_OR, 0,
-            Code.OP_MULTIPLICACAO, 0,
-            Code.OP_DIVISAO, 0,
-            Code.OP_MOD, 0,
-            Code.OP_AND, 0,
-            Code.PR_INTEIRO, 0,
-            Code.PR_REAL, 0,
-            Code.PR_STRING, 0,            
-            Code.PR_BOOLEAN, 0,
-            Code.AS(1), 0,
+/*001*/     Code.DECLARACAO_ROTINAS, Code.DECLARACAO_VARIAVEIS, Code.PONTO_E_VIRGULA, Code.ID, Code.PR_PROGRAM, 0,
+/*007**/     Code.DECLARACAO_VARIAVEIS, Code.PONTO_E_VIRGULA, Code.LISTA_VARIAVEIS, Code.AS(3), Code.ID, Code.PR_VAR, 0,
+/*014*/     0,
+/*015**/     Code.LISTA_VARIAVEIS,  Code.AS(3), Code.ID, Code.VIRGULA, 0,
+/*020**/     Code.AS(4), Code.TIPO, Code.DOIS_PONTOS, 0,
+/*024**/     Code.DECLARACAO_ROTINAS, Code.AS(6), Code.BLOCO, Code.DECLARACAO_VARIAVEIS, Code.PONTO_E_VIRGULA, Code.AS(8), Code.FECHA_PARENTESES, Code.PARAMETROS, Code.AS(5), Code.ABRE_PARENTESES, Code.ID, Code.PR_PROCEDURE, 0,
+/*037**/     Code.DECLARACAO_ROTINAS, Code.AS(6), Code.BLOCO, Code.DECLARACAO_VARIAVEIS, Code.PONTO_E_VIRGULA, Code.AS(7), Code.AS(3), Code.TIPO, Code.DOIS_PONTOS, Code.FECHA_PARENTESES, Code.PARAMETROS, Code.AS(5), Code.ABRE_PARENTESES, Code.ID, Code.PR_FUNCTION, 0,
+/*053*/     Code.BLOCO, 0,
+/*055**/     Code.LISTA_PARAMETROS, Code.LISTA_VARIAVEIS, Code.AS(3), Code.ID, 0,
+/*060*/     0,
+/*061**/     Code.LISTA_PARAMETROS, Code.LISTA_VARIAVEIS, Code.AS(3), Code.ID, Code.VIRGULA, 0,
+/*067*/     0,
+/*068*/     Code.PR_END, Code.LIST_COMANDOS, Code.PR_BEGIN, 0,
+/*072*/     Code.LIST_COMANDOS, Code.COMANDO, 0,
+/*075*/     0,
+/*076*/     Code.PONTO_E_VIRGULA, Code.ATRIBUICAO_OU_CALL, Code.ID, 0,
+/*080*/     Code.CONDICIONAL, 0,
+/*082*/     Code.LACO, 0,
+/*084**/     Code.AS(2), Code.EXPRESSAO, Code.OP_ATRIBUICAO, Code.AS(9), 0,
+/*089*/     Code.ARGUMENTOS_OPCIONAL, 0,
+/*091*/     Code.BLOCO_ELSE, Code.BLOCO_OU_COMANDO, Code.PR_THEN, Code.AS(11), Code.EXPRESSAO, Code.PR_IF, 0,            
+/*098*/     Code.PR_END, Code.BLOCO_CASE, Code.PR_OF, Code.AS(12), Code.EXPRESSAO, Code.PR_CASE, 0,
+/*105*/     Code.COMANDO, 0,
+/*107*/     Code.BLOCO, 0,
+/*109*/     Code.BLOCO_OU_COMANDO, Code.PR_ELSE, 0,
+/*112*/     0,
+/*113*/     Code.BLOCO_CASE_2, Code.LIST_COMANDOS, Code.DOIS_PONTOS, Code.LISTA_LITERAIS, Code.AS(12), Code.LIT_INTEIRO, 0,
+/*120*/     Code.BLOCO_CASE_2, Code.LIST_COMANDOS, Code.DOIS_PONTOS, Code.LISTA_LITERAIS, Code.AS(12), Code.LIT_INTEIRO, 0,
+/*127*/     Code.LIST_COMANDOS, Code.DOIS_PONTOS, Code.PR_ELSE, 0,
+/*131*/     0,
+/*132*/     Code.AS(12), Code.LIT_INTEIRO, Code.PONTO_PONTO, 0, 
+/*136*/     Code.LISTA_LITERAIS_2, Code.AS(12), Code.LIT_INTEIRO, Code.VIRGULA, 0,
+/*141*/     0,
+/*142*/     Code.LISTA_LITERAIS_2, Code.AS(12), Code.LIT_INTEIRO, Code.VIRGULA, 0,
+/*147*/     0,
+/*148*/     Code.BLOCO, Code.PR_DO, Code.AS(11), Code.EXPRESSAO, Code.PR_WHILE, 0,
+/*154*/     Code.BLOCO, Code.PR_DO, Code.PASSO, Code.AS(12), Code.EXPRESSAO, Code.TO_OU_DOWNTO, Code.AS(12), Code.EXPRESSAO, Code.OP_ATRIBUICAO, Code.AS(13), Code.ID, Code.PR_FOR, 0,
+/*167*/     Code.PR_TO, 0,
+/*169*/     Code.PR_DOWNTO, 0,
+/*171*/     Code.AS(12), Code.EXPRESSAO, Code.PR_STEP, 0,
+/*175*/     0,
+/*176*/     Code.LISTA_ARGUMENTOS, Code.EXPRESSAO, 0,
+/*179*/     0,
+/*180*/     Code.LISTA_ARGUMENTOS, Code.EXPRESSAO, Code.VIRGULA, 0,
+/*192*/     0,
+/*193*/     Code.EXPRESSAO_COMPAPACAO, Code.EXP_SIMPLES, 0,
+/*196*/     Code.AS(2), Code.EXP_SIMPLES, Code.OPERADOR_RELACIONAL, 0,
+/*200*/     0,
+/*201*/     Code.EXP_SIMPLES_2, Code.TERMO, 0,
+/*204**/     Code.AS(2), Code.EXP_SIMPLES, Code.OPERADOR_ADITIVO, 0,
+/*200*/     0,
+/*201*/     Code.TERMO2, Code.FATOR, 0,
+/*204*/     Code.TERMO2, Code.FATOR, Code.SINAL, 0,
+/*208**/     Code.AS(2), Code.TERMO, Code.OPERADOR_MULTIPLICATIVO, 0,
+/*212*/     0,
+/*213**/    Code.ARGUMENTOS_OPCIONAL, Code.ID, 0,
+/*216*/     Code.LIT_INTEIRO, 0,
+/*218*/     Code.LIT_REAL, 0,
+/*220*/     Code.LIT_STRING, 0,
+/*222*/     Code.PR_TRUE, 0,
+/*224*/     Code.PR_FALSE, 0,
+/*226*/     Code.FATOR, Code.OP_NOT, 0,
+/*229*/     Code.FECHA_PARENTESES, Code.EXPRESSAO, Code.ABRE_PARENTESES, 0,
+/*233**/     Code.AS(10), Code.FECHA_PARENTESES, Code.ARGUMENTOS, Code.ABRE_PARENTESES,Code.AS(9), 0,
+/*239*/		Code.OP_IGUAL, 0,
+/*241*/     Code.OP_MENOR, 0,
+/*243*/     Code.OP_MAIOR, 0,
+/*245*/     Code.OP_MENOR_IGUAL, 0,
+/*247*/     Code.OP_MAIOR_IGUAL, 0,
+/*249*/     Code.OP_DIFERENTE, 0,
+/*251*/     Code.OP_ADICAO, 0,
+/*253*/     Code.OP_SUBTRACAO, 0,
+/*255*/     Code.OP_ADICAO, 0,
+/*257*/     Code.OP_SUBTRACAO, 0,
+/*259*/     Code.OP_OR, 0,
+/*261*/     Code.OP_MULTIPLICACAO, 0,
+/*263*/     Code.OP_DIVISAO, 0,
+/*265*/     Code.OP_MOD, 0,
+/*267*/     Code.OP_AND, 0,
+/*269*/     Code.PR_INTEIRO, 0,
+/*271*/     Code.PR_REAL, 0,
+/*273*/     Code.PR_STRING, 0,            
+/*275*/     Code.PR_BOOLEAN, 0,
+/*277*/     Code.AS(1), 0,
+/*279*/
         };
         
         posicoes = new int[100];
@@ -222,9 +223,13 @@ public class AnalisadorSintatico {
         } 
     }
 
-
+    /**
+     * Tabela de análise sintática (39 não-terminais x 50 terminais)
+     * O valor de cada par aponta para um índice do vetor posicoes que contém o
+     * início de cada regra no vetor de regras.
+     * 
+     */
     private void initTas(){   
-    	//tabela de análise sintática 39x50
     	
         tabelaAnaliseSintatica = new int[][] {        
 /* 00 */    {0,42,43,0,42,0,42,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,42,0,0,42,0,0,42,42,42,0,42,0,0,0,0,0,0,0,0,0,42,0,0,0},
