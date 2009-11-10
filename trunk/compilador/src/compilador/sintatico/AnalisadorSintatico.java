@@ -7,6 +7,7 @@ import compilador.ErroCompilacao;
 import compilador.lexico.AnalisadorLexico;
 import compilador.lexico.Code;
 import compilador.lexico.Token;
+import compilador.semantico.AnalisadorSemantico;
 
 public class AnalisadorSintatico {
 
@@ -28,6 +29,8 @@ public class AnalisadorSintatico {
     public void compilar(String fileName) throws IOException, ErroCompilacao {
 
         AnalisadorLexico lexico = new AnalisadorLexico(fileName);
+        
+        AnalisadorSemantico semantico = new AnalisadorSemantico();
         
         LinkedList<Integer> pilha = new LinkedList<Integer>();
         
@@ -107,7 +110,7 @@ public class AnalisadorSintatico {
                 }
                 
             } else if (Code.isAcaoSemantica(topo)) {
-//                semantico.execute(lexico.getLine(), pilha.pop());
+                semantico.execute(lexico.getLine(), pilha.pop());
             } else { 
                 throw new ErroCompilacao(lexico.getLine(),token, anterior, topo);                               
             }
@@ -170,7 +173,7 @@ public class AnalisadorSintatico {
 /*179*/     0,
 /*180*/     Code.LISTA_ARGUMENTOS, Code.EXPRESSAO, Code.VIRGULA, 0,
 /*192*/     0,
-/*193*/     Code.EXPRESSAO_COMPAPACAO, Code.EXP_SIMPLES, 0,
+/*193*/     Code.EXPRESSAO_COMPARACAO, Code.EXP_SIMPLES, 0,
 /*196*/     Code.AS(2), Code.EXP_SIMPLES, Code.OPERADOR_RELACIONAL, 0,
 /*200*/     0,
 /*201*/     Code.EXP_SIMPLES_2, Code.TERMO, 0,

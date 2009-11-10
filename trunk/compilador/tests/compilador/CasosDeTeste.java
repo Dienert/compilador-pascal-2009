@@ -7,8 +7,9 @@ import org.junit.Test;
 public class CasosDeTeste {
 
 	@Test
-	public void testMain() {
-		fail("Not yet implemented");
+	public void testPrsint() {
+		String [] argumentos = new String[] {"Pascal/prsint5.pas"};
+		Compilador.main(argumentos);
 	}
 
 }

@@ -70,7 +70,7 @@ public class Code {
             DECLARACAO_ROTINAS = 110,
             DECLARACAO_VARIAVEIS = 111,
             EXPRESSAO = 112,
-            EXPRESSAO_COMPAPACAO = 113,
+            EXPRESSAO_COMPARACAO = 113,
             EXP_SIMPLES = 114,
             EXP_SIMPLES_2 = 115,
             FATOR = 116,
