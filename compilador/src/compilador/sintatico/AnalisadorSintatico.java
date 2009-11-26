@@ -116,7 +116,7 @@ public class AnalisadorSintatico {
             }
         }
         
-        System.out.println("\nPrograma aprovado pelos analisadores léxico e sintático \n");
+        System.out.println("\nPrograma aprovado pelos analisadores léxico, sintático e semântico\n");
 
     }
 
