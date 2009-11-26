@@ -6,7 +6,7 @@ public class CasosDeTeste {
 
 	@Test
 	public void testPrsint() {
-		String [] argumentos = new String[] {"Test1.pas"};
+		String [] argumentos = new String[] {"Test4.pas"};
 		Compilador.main(argumentos);
 	}
 

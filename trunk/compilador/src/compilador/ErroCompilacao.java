@@ -108,6 +108,7 @@ public class ErroCompilacao extends Exception {
                 System.err.println(message);
                 break;
         }
+        super.printStackTrace();
         
     }
     
