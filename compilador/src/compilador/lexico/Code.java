@@ -52,8 +52,11 @@ public class Code {
             PR_TO = 45,
             PR_TRUE = 46,            
             PR_VAR = 47,
-            PR_WHILE = 48,            
-            ERRO = 49; 
+            PR_WHILE = 48, 
+            PONTO = 49,
+            ABRE_CHAVE = 50,
+            FECHA_CHAVE = 51,
+            ERRO = 52; 
             
     public static final int
             
@@ -91,7 +94,8 @@ public class Code {
             TERMO = 131,
             TERMO2 = 132,
             TIPO = 133,            
-            TO_OU_DOWNTO = 134;
+            TO_OU_DOWNTO = 134,
+    		COMENTARIO = 135;
     
     public static boolean isTerminal(int code){
         return (code >= 0 && code < 100);
@@ -113,7 +117,7 @@ public class Code {
         return -acaoSemantica;
     }
     
-    // Decodifica na String de retorno o codigo do numero
+    // Decodifica o código do terminal em sua descricao
     public static String getDescrition(int code){
         switch(code){
             case ERRO: return "ERRO";
@@ -165,6 +169,9 @@ public class Code {
             case PR_PROCEDURE: return "procedure";
             case PR_VAR: return "var";
             case PR_PROGRAM: return "program";
+            case PONTO: return ".";
+            case ABRE_CHAVE: return "{";
+            case FECHA_CHAVE: return "}";
             default:return "ERRO";
         }
     }

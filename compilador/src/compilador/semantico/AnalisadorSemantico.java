@@ -39,43 +39,43 @@ public class AnalisadorSemantico {
         this.linha = linha;
         switch(acao) {
             case -1:
-//                addIdType();
+                addIdType();
                 break;
             case -2:
-//                checkOperandos();
+                checkOperandos();
                 break;
             case -3:
-//                addDecList();
+                addDecList();
                 break;
             case -4:
-//                declare();
+                declare();
                 break;
             case -5:
-//                inNivel();
+                inNivel();
                 break;
             case -6:
-//                outNivel();
+                outNivel();
                 break;
             case -7:
-//                declareFunction();
+                declareFunction();
                 break;
             case -8:
-//                declareProcedure();
+                declareProcedure();
                 break;
             case -9:
-//                testIdComando();
+                testIdComando();
                 break;
             case -10:
-//                testArgs();
+                testArgs();
                 break;
             case -11:
-//                expBoolean();
+                expBoolean();
                 break;
             case -12:
-//                expInteger();
+                expInteger();
                 break;
             case -13:
-//                decFor();
+                decFor();
                 break;
 
         }

@@ -209,11 +209,15 @@ public class AnalisadorLexico {
                     unget();               
                     return new Token(Code.DOIS_PONTOS, ":");
                 case '.': 
-                    ch = nextChar();
-                    if(ch == '.'){
-                        return new Token(Code.PONTO_PONTO, "..");
-                    }                
-                    simbol.append('.');
+                	try {
+	                    ch = nextNonBlank();
+	                    if(ch == '.'){
+	                        return new Token(Code.PONTO_PONTO, "..");
+	                    }                
+	                    simbol.append('.');
+                	} catch (IOException e) {
+                		return new Token(Code.PONTO, ".");
+                	}
                 default:  
                     break;
             }
