@@ -6,4 +6,4 @@ begin
    if (NUMERO >= 20) and (NUMERO <=90) then
       NUMERO := 10 mod 3;
    else NUMERO := 10 div 3
-end
+end.

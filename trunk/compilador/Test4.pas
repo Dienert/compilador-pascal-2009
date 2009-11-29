@@ -1,12 +1,14 @@
 program Test4;
 var
-   A, B, R, I : integer;
+   A, B, R, I : integer; 
 begin
    while (I <= 5) do
+   begin
       A := A+1;
       B := B-1;
       R := A + B;
-      I := I + 1;
+      I := I + 1; 
    end
-end
+end.
 
+{retirar algumas palavras reservadas}

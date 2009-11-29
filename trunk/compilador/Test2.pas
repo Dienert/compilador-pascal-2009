@@ -10,4 +10,4 @@ begin
       A := B;
       B := X;
    end
-end
+end.
