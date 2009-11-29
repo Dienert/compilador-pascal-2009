@@ -211,13 +211,21 @@ public class AnalisadorLexico {
                 case '.': 
                 	try {
 	                    ch = nextNonBlank();
-	                    if(ch == '.'){
-	                        return new Token(Code.PONTO_PONTO, "..");
-	                    }                
-	                    simbol.append('.');
                 	} catch (IOException e) {
                 		return new Token(Code.PONTO, ".");
                 	}
+                    if(ch == '.'){
+                        return new Token(Code.PONTO_PONTO, "..");
+                    }    
+                    if (ch == '{') {
+                    	try {
+	                    	while (nextNonBlank() != '}');
+                    		return new Token(Code.PONTO, ".");
+                    	} catch (IOException e) {
+                    		return new Token(Code.ERRO, ch+"");
+                    	}
+                    }
+                    simbol.append('.');
                 default:  
                     break;
             }
@@ -242,6 +250,15 @@ public class AnalisadorLexico {
             return stringToken(simbol, ch);
         
         // Se chegar aqui, significa que o caracter nao eh valido
+        if (ch == '{') {
+        	try {
+				while (nextNonBlank() != '}');
+			} catch (IOException e) {
+				return new Token(Code.ERRO, ch+"" );
+			}
+        	return nextToken();
+        }
+        	
         return new Token(Code.ERRO, ch+"" );
         
     }
