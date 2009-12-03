@@ -38,7 +38,7 @@ public class AnalisadorSemantico {
         
         this.linha = linha;
         switch(acao) {
-            case -1:
+            case -1: //
                 addIdType();
                 break;
             case -2:
@@ -253,6 +253,10 @@ public class AnalisadorSemantico {
         decList.push(idList.pop());
     }
     
+    /**
+     * Nova declaracao
+     * @throws ErroCompilacao
+     */
     private void declare() throws ErroCompilacao{
         Object type = typeList.pop();
         while(!decList.isEmpty()){
