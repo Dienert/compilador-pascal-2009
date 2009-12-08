@@ -4,11 +4,11 @@
   Testa uso de operador de comparacao com valores booleanos
   }
 program ok02;
-    procedure m;
+    procedure m();
         var ok : boolean;
       begin
-      ok:= false < true
-      end
+      ok:= false < true;
+      end;
 begin
-m
+m();
 end.

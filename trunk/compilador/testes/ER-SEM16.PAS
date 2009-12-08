@@ -4,11 +4,11 @@
   Menos unario aplicado a booleano
   }
 program erro16;      
-    procedure m;
+    procedure m();
       begin
-      writeln( -true )
-      end
+      writeln( -true );
+      end;
 
 begin
-m
+m();
 end.

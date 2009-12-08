@@ -6,9 +6,9 @@
 program erro31;
 var i : integer;
 
-    procedure i;
+    procedure i();
       begin
-      end
+      end;
 
 begin
 m

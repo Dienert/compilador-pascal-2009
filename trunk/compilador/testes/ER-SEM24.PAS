@@ -4,16 +4,16 @@
   parametro por referencia deve ser variavel
   }
 program erro24;
-  function f : integer;
+  function f() : integer;
     begin
-    f:= 0
-    end
+    f:= 0;
+    end;
 
   procedure p( a : integer; var b : integer);
     begin
-    end
+    end;
 
 
 begin
-p(f, f)
+p(f, f);
 end.

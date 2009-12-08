@@ -4,10 +4,10 @@
   funcao como parametro a readln
   }
 program erro22;
-  function f : integer;
+  function f() : integer;
     begin
-    readln(f)
-    end
+    readln(f());
+    end;
       
 begin
 end.

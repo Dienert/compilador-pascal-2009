@@ -4,11 +4,11 @@
   Tipo 'e uma variavel
   }
 program erro18;      
-    procedure m;
+    procedure m();
         var i : i;
       begin
-      end
+      end;
 
 begin
-m
+m();
 end.

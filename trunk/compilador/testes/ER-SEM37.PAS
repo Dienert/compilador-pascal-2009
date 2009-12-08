@@ -5,5 +5,5 @@
   }
 program erro37;
 begin
-set(0)
+set(0);
 end.

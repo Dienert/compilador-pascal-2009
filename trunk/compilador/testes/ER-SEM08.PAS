@@ -4,11 +4,11 @@
   Uso de operador aritmetico com valores booleanos
   }
 program erro08;      
-    procedure m;
+    procedure m();
       begin
-      writeln( true + false )
-      end
+      writeln( true + false );
+      end;
 
 begin
-m
+m();
 end.

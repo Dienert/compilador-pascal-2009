@@ -5,6 +5,6 @@
   }
 program erro19;      
       var i : integer;
-          i : integer;
+      var i : integer;
 begin
 end.

@@ -98,8 +98,7 @@ public class Code {
             TERMO2 = 132,
             TIPO = 133,            
             TO_OU_DOWNTO = 134,
-    		COMENTARIO = 135,
-		    DECLARACOES = 136;
+    		COMENTARIO = 135;
     
     public static boolean isTerminal(int code){
         return (code >= 0 && code < 100);

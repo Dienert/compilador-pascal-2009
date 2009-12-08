@@ -4,11 +4,11 @@
   Tipo incorreto em valor de retorno
   }
 program erro39;
-    function m : integer;
+    function m() : integer;
       begin
-      m:= true
-      end
+      m:= true;
+      end;
 
 begin
-writeln(m)
+writeln(m);
 end.

@@ -4,12 +4,12 @@
   Procedimento usado como funcao
   }
 program erro36;
-    procedure m;
+    procedure m();
       begin
-      end
+      end;
 
   var i : integer;
 
 begin
-i:= m
+i:= m();
 end.

@@ -10,5 +10,5 @@ program erro23;
 
 
 begin
-p(0, 0)
+p(0, 0);
 end.

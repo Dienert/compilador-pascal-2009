@@ -4,11 +4,11 @@
   Parametros de readln devem ser variaveis.
   }
 program erro17;      
-    procedure m;
+    procedure m();
       begin
-      readln(3)
-      end
+      readln(3);
+      end;
 
 begin
-m
+m();
 end.

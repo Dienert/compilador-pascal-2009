@@ -7,9 +7,9 @@ program erro25;
     procedure m( a : integer; var b : integer);
         var a, b : integer;
       begin
-      end
+      end;
 
   var c : integer;
 begin
-m(c, c)
+m(c, c);
 end.

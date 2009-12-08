@@ -5,15 +5,15 @@
   procedimento anterior
   }
 program erro21;      
-procedure m;
+procedure m();
   var i : integer;
   begin
   end
 
 procedure p;
   begin
-  i:= 0
-  end
+  i:= 0;
+  end;
 
 begin
 end.
