@@ -10,12 +10,12 @@ var n : integer;
     procedure set( pn : integer );
         var n : integer;
       begin
-      n:= pn
-      end
+      n:= pn;
+      end;
     function put( n : integer ) : integer;
       begin
-      put:= n
-      end
+      put:= n;
+      end;
 
 begin
 set(4);

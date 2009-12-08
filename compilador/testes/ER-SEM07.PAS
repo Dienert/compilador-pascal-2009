@@ -4,12 +4,12 @@
   Atribuicao a valor
   }
 program erro06;
-    procedure m;
+    procedure m();
         var i : integer;
       begin
-      0:= 0
-      end
+      0:= 0;
+      end;
 
 begin
-m
+m();
 end.

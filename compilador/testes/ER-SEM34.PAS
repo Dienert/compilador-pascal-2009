@@ -4,12 +4,12 @@
   funcao usada como procedimento
   }
 program erro34;
-    function m : integer;
+    function m() : integer;
       begin
-      m:= 0
-      end
+      m:= 0;
+      end;
 
 
 begin
-m
+m();
 end.

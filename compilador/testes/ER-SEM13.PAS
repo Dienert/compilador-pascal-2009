@@ -4,12 +4,12 @@
   Variaveis booleanas nao podem ser lidas.
   }
 program erro13;      
-    procedure m;
+    procedure m();
         var b : boolean;
       begin
-      readln(b)
-      end
+      readln(b);
+      end;
 
 begin
-m
+m();
 end.

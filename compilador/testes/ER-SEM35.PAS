@@ -4,11 +4,11 @@
   procedimento com valor de retorno
   }
 program erro35;
-    procedure m;
+    procedure m();
       begin
-      m:= 0
-      end
+      m:= 0;
+      end;
 
 begin
-m
+m();
 end.

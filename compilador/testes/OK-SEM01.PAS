@@ -5,13 +5,13 @@
   de comparacao
   }
 program ok01;
-    procedure m;
+    procedure m();
       begin
       if true >= false
       then
-        writeln(0)
-      end
+        writeln(0);
+      end;
 
 begin
-m
+m();
 end.

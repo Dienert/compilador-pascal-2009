@@ -4,11 +4,11 @@
   Dois procedimentos com mesmo nome
   }
 program erro33;
-    procedure m;
+    procedure m();
       begin
-      end
-    procedure m;
+      end;
+    procedure m();
       begin
-      end
+      end;
 begin
 end.

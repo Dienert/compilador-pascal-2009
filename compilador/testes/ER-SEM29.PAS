@@ -4,10 +4,10 @@
   chamada incorreta a procedimento sem parametros
   }
 program erro29;
-procedure set;
+procedure set();
   begin
-  end
+  end;
 
 begin
-set()
+set();
 end.

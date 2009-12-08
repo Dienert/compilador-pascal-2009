@@ -4,14 +4,14 @@
   Variavel i declarada duas vezes, mas nao em sequencia
   }
 program erro28;
-    var i : integer;
-        j : integer;
+    var i : integer,
+        j : integer,
         i : integer;
 
-    procedure m;
+    procedure m();
       begin
-      end
+      end;
 
 begin
-m
+m();
 end.

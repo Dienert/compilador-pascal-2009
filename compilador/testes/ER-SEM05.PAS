@@ -4,12 +4,12 @@
   Erro de tipos
   }
 program erro05;      
-    procedure m;
+    procedure m();
         var b : boolean;
       begin
-      b:= 0
+      b:= 0;
       end
 
 begin
-m
+m();
 end.
