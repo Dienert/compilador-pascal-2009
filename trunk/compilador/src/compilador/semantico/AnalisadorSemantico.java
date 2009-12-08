@@ -9,7 +9,9 @@ import java.util.NoSuchElementException;
 
 public class AnalisadorSemantico {
 
+	/** lista de tipos **/
     private LinkedList<Object> typeList;
+    /** lista de identificadores **/
     private LinkedList<String> idList;
     private LinkedList<String> decList;
     private LinkedList<Integer> opList;
@@ -242,7 +244,7 @@ public class AnalisadorSemantico {
                 if(type1.getClass().isInstance(type2) || (isDouble(type1) && isInteger(type2))) {
                     cont--;
                 } else {
-                    throw new ErroCompilacao("Operador \":=\" requer requer uma variável ou " +
+                    throw new ErroCompilacao("Operador \":=\" requer uma variável ou " +
                             "função antes e uma espressão de mesmo tipo depois", linha);
                 }
         }
