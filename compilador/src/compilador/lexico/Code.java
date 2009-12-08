@@ -56,7 +56,10 @@ public class Code {
             PONTO = 49,
             ABRE_CHAVE = 50,
             FECHA_CHAVE = 51,
-            ERRO = 52; 
+            PR_ARRAY = 52,
+            ABRE_COLCHETE = 53,
+            FECHA_COLCHETE = 54,
+            ERRO = 55; 
             
     public static final int
             
@@ -95,7 +98,8 @@ public class Code {
             TERMO2 = 132,
             TIPO = 133,            
             TO_OU_DOWNTO = 134,
-    		COMENTARIO = 135;
+    		COMENTARIO = 135,
+		    DECLARACOES = 136;
     
     public static boolean isTerminal(int code){
         return (code >= 0 && code < 100);
@@ -169,9 +173,12 @@ public class Code {
             case PR_PROCEDURE: return "procedure";
             case PR_VAR: return "var";
             case PR_PROGRAM: return "program";
+            case PR_ARRAY: return "array";
             case PONTO: return ".";
             case ABRE_CHAVE: return "{";
             case FECHA_CHAVE: return "}";
+            case ABRE_COLCHETE: return "[";
+            case FECHA_COLCHETE: return "]";
             default:return "ERRO";
         }
     }

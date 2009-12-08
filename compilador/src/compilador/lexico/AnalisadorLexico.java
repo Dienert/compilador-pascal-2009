@@ -29,6 +29,7 @@ public class AnalisadorLexico {
         switch (token.charAt(0)) {
             case 'a':
                 if (token.equals("and")) return Code.OP_AND;
+                if (token.equals("array")) return Code.PR_ARRAY;
                 return Code.ID;                
             case 'b':
                 if (token.equals("begin")) return Code.PR_BEGIN;
@@ -170,6 +171,10 @@ public class AnalisadorLexico {
                     return new Token(Code.ABRE_PARENTESES, "(");
                 case ')': 
                     return new Token(Code.FECHA_PARENTESES, ")");
+                case '[': 
+                	return new Token(Code.ABRE_COLCHETE, "[");
+                case ']': 
+                	return new Token(Code.FECHA_COLCHETE, "]");
                 case '+': 
                     return new Token(Code.OP_ADICAO, "+");
                 case '-': 
