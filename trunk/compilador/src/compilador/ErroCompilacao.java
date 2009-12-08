@@ -85,33 +85,30 @@ public class ErroCompilacao extends Exception {
             case REGRA_ZERO:
                 message = "Erro na linha: %d\n\"%s\" não esperado após \"%s\"";
                 message = String.format(message, linha, atual.getSimbolo(), antes.getSimbolo());
-                System.err.println(message);            
+                System.out.println(message);            
                 break;
             case TOKEN_INVALIDO:
                 message = "Erro na linha: %d\n\"%s\" não é valido na gramática";
                 message = String.format(message, linha, atual.getSimbolo());
-                System.err.println(message);   
+                System.out.println(message);   
                 break;
             case NAO_ESPERADO:
                 message = "Erro na linha: %d\nEsperando \"%s\" após \"%s\", mas encontrado \"%s\"";
                 message = String.format(message, linha, Code.getDescrition(espected), atual.getSimbolo(), antes.getSimbolo());
-                System.err.println(message);
+                System.out.println(message);
                 break;
             case NAO_DECLARADO:
                 message = "Erro na linha: %d\nIdentificador \"%s\" não declarado";
                 message = String.format(message, linha, id);
-                System.err.println(message);
+                System.out.println(message);
                 break;
             case MENSAGEM:
                 message = "Erro na linha: %d\n"+message;
                 message = String.format(message, linha);
-                System.err.println(message);
+                System.out.println(message);
                 break;
         }
 //        super.printStackTrace();
         
     }
-    
-    
-    
 }
